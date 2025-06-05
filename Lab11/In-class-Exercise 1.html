@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>Piano</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        #header {
+            background-color: skyblue;
+            font-size: 16px;
+            padding: 5px;
+        }
+        #inputArea {
+            margin: 10px;
+        }
+        #keyboard {
+            position: relative;
+            height: 250px;
+            width: 400px;
+            margin: 0 auto;
+        }
+        .white-key {
+            position: relative;
+            width: 60px;
+            height: 200px;
+            border: 1px solid black;
+            float: left;
+            z-index: 1;
+        }
+        .white-key span {
+            position: absolute;
+            bottom: 5px;
+            width: 100%;
+            left: 5%;
+            bottom: 15px;
+        }
+        .black-key {
+            position: absolute;
+            width: 40px;
+            height: 120px;
+            background: black;
+            z-index: 2;
+        }
+        #key1 { left: 40px; }
+        #key2 { left: 100px; }
+        #key3 { left: 220px; }
+        #key4 { left: 280px; }
+
+        table {
+            margin: 20px auto;
+            width: 70%;
+        }
+        table, th, td {
+            border: 1px solid gray;
+        }
+        .edit, .delete {
+            padding: 2px 5px;
+        }
+        table tr:first-child {
+            background-color: blue;
+            color: white;
+        }
+        table tr:nth-child(odd):not(:first-child) {
+            background-color: #f9f9f9;
+        }
+        table tr:nth-child(even):not(:first-child) {
+            background-color: #e6f7ff;
+        }
+        table th:nth-child(1),
+        table td:nth-child(1) { width: 20%; }
+        table th:nth-child(2),
+        table td:nth-child(2) { width: 40%; }
+        table th:nth-child(3),
+        table td:nth-child(3) { width: 20%; }
+        table th:nth-child(4),
+        table td:nth-child(4) { width: 20%; }
+    </style>
+</head>
+<body>
+    <div id="header">Copyright © <b>NUTN</b></div>
+
+    <div id="inputArea">
+        <input type="text" id="songName" placeholder="輸入歌名" style="height: 35px; width: 100px; text-align: right; ">
+        <input type="text" id="notes" placeholder="輸入音階" style="height: 35px; width: 300px; text-align: right;">
+        <button onclick="saveSong()" style="height: 40px; width: 70px;">Save</button>
+    </div>
+
+    <div id="keyboard">
+
+        <div class="white-key" onclick="pressKey('Do')"><span>Do</span></div>
+        <div class="white-key" onclick="pressKey('Re')"><span>Re</span></div>
+        <div class="white-key" onclick="pressKey('Mi')"><span>Mi</span></div>
+        <div class="white-key" onclick="pressKey('Fa')"><span>Fa</span></div>
+        <div class="white-key" onclick="pressKey('So')"><span>So</span></div>
+        <!-- <div class="white-key"></div> -->
+
+        <div class="black-key" id="key1"></div>
+        <div class="black-key" id="key2"></div>
+        <div class="black-key" id="key3"></div>
+        <div class="black-key" id="key4"></div>
+    </div>
+
+    <div id="buttons">
+        <button style="background:green; width: 150px; height: 35px;" onclick="deleteLast()">Delete</button>
+        <button style="background:yellow; width: 150px; height: 35px;" onclick="addSpace()">Space</button>
+    </div>
+
+    <h2><i>Song List</i></h2>
+    <table id="songTable">
+        <tr>
+            <th>編號</th>
+            <th>歌曲名稱</th>
+            <th>音符</th>
+            <th>編輯</th>
+        </tr>
+    </table>
+
+    <script>
+            let songList = [];
+
+            let audioFiles = {
+                "Do": "Do.wav",
+                "Re": "Re.wav",
+                "Mi": "Mi.wav",
+                "Fa": "Fa.wav",
+                "So": "So.wav"
+            };
+
+            window.onload = function() {
+                const stored = localStorage.getItem('songList');
+                if (stored) {
+                    songList = JSON.parse(stored);
+                    renderSongs();
+                }
+            };
+
+            function pressKey(note) {
+                let notesBox = document.getElementById("notes");
+                notesBox.value += note;
+                playSound(note);
+            }
+
+            function playSound(note) {
+                let audio = new Audio(audioFiles[note]);
+                audio.play();
+            }
+
+            function deleteLast() {
+                let notesBox = document.getElementById("notes");
+                notesBox.value = notesBox.value.replace(/(Do|Re|Mi|Fa|So)\s*$/, '');
+            }
+
+            function addSpace() {
+                let notesBox = document.getElementById("notes");
+                notesBox.value += " ";
+            }
+
+            function saveSong() {
+                let name = document.getElementById("songName").value;
+                let notes = document.getElementById("notes").value;
+                if (!name || !notes) {
+                    alert("請輸入歌名與音符");
+                    return;
+                }
+                songList.push({ name, notes });
+                localStorage.setItem('songList', JSON.stringify(songList)); // Save to localStorage
+                renderSongs();
+            }
+
+            function renderSongs() {
+                let table = document.getElementById("songTable");
+                // 清除舊的資料
+                table.innerHTML = `<tr><th>編號</th><th>歌曲名稱</th><th>音符</th><th>編輯</th></tr>`;
+                songList.forEach((song, index) => {
+                    let row = table.insertRow();
+                    row.innerHTML = `
+                        <td>${index}</td>
+                        <td>${song.name}</td>
+                        <td>${song.notes}</td>
+                        <td>
+                            <button class="edit" onclick="editSong(${index})">Edit</button>
+                            <button class="delete" onclick="deleteSong(${index})">Delete</button>
+                        </td>`;
+                });
+            }
+
+            function deleteSong(index) {
+                songList.splice(index, 1);
+                localStorage.setItem('songList', JSON.stringify(songList)); // Update localStorage
+                renderSongs();
+            }
+
+            function editSong(index) {
+                document.getElementById("songName").value = songList[index].name;
+                document.getElementById("notes").value = songList[index].notes;
+            }
+    </script>
+</body>
+</html>

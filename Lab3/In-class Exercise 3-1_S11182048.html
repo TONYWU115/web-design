@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>In-class Exercise 3-1</title>
+    </head>
+
+    <body>
+        <h2>個人資訊調查</h2>
+        <p>統計截止日期：3/15</p>
+
+        <form method="get" action="https://people.cs.nycu.edu.tw/~jmliang/get_post.php">
+
+            <label>姓名：
+                <input type="text" name="name" placeholder="王小明" required> (必填)
+            </label>
+            <br><br>
+
+            <label>學號：
+                <input type="text" name="student_id" placeholder="B0000000">
+            </label>
+            <br><br>
+
+            <label>出生日期：
+                <input type="date" name="birthday"> (yyyy-mm-dd)
+            </label>
+            <br><br>
+
+            <label>家庭成員(數)：
+                <input type="number" name="family_members" min="0" max="5" step="1" value="1"> (Enter a number between 0 and 5)
+            </label>
+            <br><br>
+
+            <label>平均成績：
+                0 <input type="range" name="score" min="0" max="100" value="50"> 100
+            </label>
+            <br><br>
+
+            <label>聯絡方式：
+                <input type="tel" name="phone" pattern="\(\d{2}\)\d{3}-\d{4}" placeholder="(##)###-####"> (##)###-####
+            </label>
+           <br><br>
+
+            <label>聯絡信箱：
+                <input type="email" name="email" placeholder="name@domain.com"> (name@domain.com)
+            </label>
+            <br><br>
+
+            <label>個人網頁：
+                <input type="url" name="website" placeholder="http://www.domainname.com"> (http://www.domainname.com)
+            </label>
+            <br><br>
+
+            <label>幸運顏色：
+                <input type="color" name="color" #ADD8E6> (Hexadecimal code such as #ADD8E6)
+            </label>
+            <br><br>
+
+            <button type="submit">Submit</button>
+            <button type="reset">Clear</button>
+        </form>
+    </body>
+</html>

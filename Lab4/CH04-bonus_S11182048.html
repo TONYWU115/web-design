@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>CH04-bonus</title>
+        <style>
+            body {
+                font-family: sans-serif;
+            }
+            .menu {
+                display: flex;
+                /* background-color: #eee; */
+                padding: 0;
+                margin: 0;
+            }
+            .menu > li {
+                position: relative;
+                list-style: none;
+                padding: 10px 10px;
+                background-color: white;
+                border: 1px solid #ccc;
+                color: black;
+                cursor: pointer;
+                width: 100%;
+                text-align: center;
+            }
+            .menu > li:hover {
+                background-color: #f26647;
+                color: white;
+            }
+            .submenu, .subsubmenu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: white;
+                border: 1px solid #ccc;
+                width: 100%;
+                padding: 0;
+            }
+            .submenu li, .subsubmenu li {
+                list-style: none;
+                padding: 10px;
+                cursor: pointer;
+                color: black;
+                width: 100%;
+                box-sizing: border-box;
+                text-align: center;
+                background-color: white;
+            }
+            .submenu li:hover, .subsubmenu li:hover {
+                background-color: #f26647;
+                color: white;
+                width: 100%;
+            }
+            .submenu li {
+                position: relative;
+                width: 100%;
+            }
+            .submenu li:hover .subsubmenu {
+                display: block;
+                left: 100%;
+                top: 0;
+            }
+            .menu > li:hover .submenu {
+                display: block;
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <ul class="menu">
+            <li>校園資訊</li>
+            <li>數學研究
+                <ul class="submenu">
+                    <li>醫學院</li>
+                    <li>研究中心</li>
+                    <li>研究單位
+                        <ul class="subsubmenu">
+                            <li>分子醫學研究中心</li>
+                            <li>新興病毒研究中心</li>
+                            <li>綠色科技研究中心</li>
+                        </ul>
+                    </li>
+                    <li>研究查詢</li>
+                </ul>
+            </li>
+            <li>行政服務</li>
+            <li>招生資訊</li>
+        </ul>
+    </body>
+</html>

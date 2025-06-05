@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>In-class-Exercises 6-1</title>
+        <style>
+            body {
+                font-size: 24px;
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <script text="text/javascript">
+            var name;
+            name = window.prompt("Please enter your name");
+            
+            var now = new Date();
+            var hour = now.getHours();
+
+            if(hour < 12)
+            {
+
+                document.body.style.backgroundColor = "#d67666";
+                document.write("<h1 style='color:red'>");
+                document.write("Good Morning, "  + name + "!</h1>");
+            }
+            else if(hour >= 12)
+            {
+                hour -= 12;
+
+                if(hour < 6)
+                {
+                    document.body.style.backgroundColor = "#89bbf0";
+                    document.write("<h1 style='color:blue'>");
+                    document.write("Good Afternoon, " + name + "!</h1>");
+                }
+                else if(hour >= 6)
+                {
+                    document.body.style.backgroundColor = "#aaecac";
+                    document.write("<h1 style='color:green'>");
+                    document.write("Good Evening, " + name + "!</h1>");
+                }
+            }
+        </script>
+        
+    </body>
+</html>

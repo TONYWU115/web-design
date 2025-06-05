@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>In-class-Exercises 4-1</title>
+        
+        <style>
+            
+            html,body {
+                font-family: sans-serif;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+            }
+            header{
+                text-align: center;
+                padding: 20px;
+                color: white;
+                background-color: #37474F;
+                flex: 0 0 3%;
+            }
+            nav{
+                text-align: center;
+                padding: 15px;
+                color: white;
+                background-color: #263238;
+                flex: 0 0 2%;
+            }
+
+            .container {
+                display: flex;
+                justify-content: space-between;
+                flex: 1;
+            }
+
+            section{
+               text-align: center;
+               padding: 20px;
+               color: white;
+               background-color: #78909C;
+               width: 60%;
+            }
+
+            aside{
+                text-align: center;
+                padding: 20px;
+                color: white;
+                background-color: #546E7A;
+                width: 20%;
+                
+            }
+            .left{
+                float: left;
+                
+            }
+            .right{
+                float: right;
+                
+            }
+            footer{
+                text-align: center;
+                padding: 20px;
+                color: white;
+                background-color: #455A64;
+                flex: 0 0 3%;
+            }
+        </style>
+    </head>
+
+    <body>
+        <header><b>HEADER 標題</b></header>
+        <nav><b>NAV 導覽列</b></nav>
+
+        <div class="container">
+            <aside class="left"><b>ASIDE1 左側邊</b></aside>
+
+            <section><b>SECTION 區塊</b></section>
+            
+            <aside class="right"><b>ASIDE2 右側邊</b></aside>
+        </div>
+
+        <footer><b>FOOTER 頁尾</b></footer>
+    </body>
+</html>

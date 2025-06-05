@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>In-class-Exercise 19-1</title>
+</head>
+<body>
+    <form action="result.php" method="post">
+      出生：
+      <select name="year">
+        <script>
+          for (var y = 1900 ; y <= 2025; y++) 
+          {
+            document.write('<option>' + y + '</option>');
+          }
+        </script>
+      </select> 年
+
+      <select name="month">
+        <script>
+          for (var m = 1; m <= 12; m++) {
+            document.write('<option>' + m + '</option>');
+          }
+        </script>
+      </select> 月
+
+      <select name="day">
+        <script>
+          for (var d = 1; d <= 31; d++) {
+            document.write('<option>' + d + '</option>');
+          }
+        </script>
+      </select> 日
+      
+      <br><br>
+      身高：<input type="text" name="height"> 公分<br>
+      體重：<input type="text" name="weight"> 公斤<br>
+      <input type="submit" value="提交">
+    </form>
+</body>
+</html>

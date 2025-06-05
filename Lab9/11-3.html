@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>In-class-Exercise 11-3</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        table {
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #000000;
+            /* padding: 8px; */
+            text-align: center;
+        }
+        th {
+            background-color: #003399;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #add8e6;
+        }
+        button {
+            /* padding: 5px 10px; */
+            width: 50px;
+            height: 20px;
+            border: 1px solid #888;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #eee;
+        }
+        #gradeInputForm label {
+            display: inline-block;
+            width: 95px;
+            text-align: right;
+            margin-right: 5px;
+            margin-bottom: 8px;
+        }
+        .input-field {
+            width: 200px;
+            /* box-sizing: border-box; */
+        }
+        
+    </style>
+
+    <script src="./11-3.js"></script>
+    
+</head>
+<body>
+    <form id="gradeInputForm" action="#">
+    <label for="studentId">Student Id</label>
+    <input type="text" id="studentId" class="input-field" style="width: 200px;"><br>
+
+    <label for="physics">Physics</label>
+    <input type="number" id="physics" class="input-field"><br>
+
+    <label for="calculus">Calculus</label>
+    <input type="number" id="calculus" class="input-field"><br>
+
+    <label for="discreteMath">Discrete Math</label>
+    <input type="number" id="discreteMath" class="input-field"><br>
+
+    <input type="button" id="enterButton" value="Enter">
+</form>
+    <br>
+    <h2 style="text-align: center;">Grade Sheet</h2>
+    <div id="gradeSheet">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Student Id</th>
+                    <th>Physics</th>
+                    <th>Calculus</th>
+                    <th>Discrete Math</th>
+                    <th>Average</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="gradeTableBody">
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        document.getElementById('enterButton').addEventListener('click', saveGrade);
+    </script>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>In-class-Exercise 9-2</title>
+        <style>
+            body{
+                    text-align: center;
+                }
+                #display {
+                    text-align: right;
+                    height: 40px;
+                    width: 210px;
+                    margin: 2px;
+                }
+                button {
+                    font-size: 15px;
+                    width: 50px;
+                    height: 50px;
+                    margin: 1px;
+                }
+                #btn0 {
+                    width: 107px;
+                }
+        </style>
+    </head>
+    <body>
+        <h2 style="text-align: center;">Copyright &copy; NUTN</h2>
+        <div class="calculator">
+            <input type="text" id="display" value="0" readonly>
+            <div>
+                <button id="btnC">C</button>
+                <button id="btnDel">DEL</button>
+                <button id="btnPercent">%</button>
+                <button id="btnPlus">+</button>
+                <br>
+                <button id="btn7">7</button>
+                <button id="btn8">8</button>
+                <button id="btn9">9</button>
+                <button id="btnMinus">-</button>
+                <br>
+                <button id="btn4">4</button>
+                <button id="btn5">5</button>
+                <button id="btn6">6</button>
+                <button id="btnMultiply">*</button>
+                <br>
+                <button id="btn1">1</button>
+                <button id="btn2">2</button>
+                <button id="btn3">3</button>
+                <button id="btnDivide">/</button>
+                <br>
+                <button id="btn0">0</button>
+                <button id="btnDot">.</button>
+                <button id="btnEqual">=</button>
+            </div>
+        </div>
+
+        <script>
+
+            const display = document.getElementById("display");
+
+            document.getElementById("btn0").addEventListener("click", function() {
+                if (display.value === "0") {
+                    display.value = "0";
+                } else {
+                    display.value += "0";
+                }
+            });
+
+            document.getElementById("btn1").addEventListener("click", function() {
+                if (display.value === "0") {
+                    display.value = "1";
+                } else {
+                    display.value += "1";
+                }
+            });
+
+            document.getElementById("btn2").addEventListener("click", function() {
+                if (display.value === "0") {
+                    display.value = "2";
+                } else {
+                    display.value += "2";
+                }
+            });
+
+            document.getElementById("btn3").addEventListener("click", function() {
+                if (display.value === "0") {
+                    display.value = "3";
+                } else {
+                    display.value += "3";
+                }
+            });
+
+            document.getElementById("btn4").addEventListener("click", function() {
+                if (display.value === "0") {
+                    display.value = "4";
+                } else {
+                    display.value += "4";
+                }
+            });
+
+            document.getElementById("btn5").addEventListener("click", function() {
+                if (display.value === "0") {
+                    display.value = "5";
+                } else {
+                    display.value += "5";
+                }
+            });
+
+            document.getElementById("btn6").addEventListener("click", function() {
+                if (display.value === "0") {
+                    display.value = "6";
+                } else {
+                    display.value += "6";
+                }
+            });
+
+            document.getElementById("btn7").addEventListener("click", function() {
+                if (display.value === "0") {
+                    display.value = "7";
+                } else {
+                    display.value += "7";
+                }
+            });
+
+            document.getElementById("btn8").addEventListener("click", function() {
+                if (display.value === "0") {
+                    display.value = "8";
+                } else {
+                    display.value += "8";
+                }
+            });
+
+            document.getElementById("btn9").addEventListener("click", function() {
+                if (display.value === "0") {
+                    display.value = "9";
+                } else {
+                    display.value += "9";
+                }
+            });
+
+            document.getElementById("btnPlus").addEventListener("click", function() {
+                display.value += "+";
+            });
+
+            document.getElementById("btnMinus").addEventListener("click", function() {
+                display.value += "-";
+            });
+
+            document.getElementById("btnMultiply").addEventListener("click", function() {
+                display.value += "*";
+            });
+
+            document.getElementById("btnDivide").addEventListener("click", function() {
+                display.value += "/";
+            });
+
+            document.getElementById("btnDot").addEventListener("click", function() {
+                if (!display.value.includes(".")) {
+                    display.value += ".";
+                }
+            });
+
+            document.getElementById("btnC").addEventListener("click", function() {
+                display.value = "0";
+            });
+
+            document.getElementById("btnDel").addEventListener("click", function() {
+                if (display.value.length > 1) {
+                    display.value = display.value.slice(0, -1);
+                } else {
+                    display.value = "0";
+                }
+            });
+
+            document.getElementById("btnPercent").addEventListener("click", function() {
+                display.value = (parseFloat(display.value) / 100).toString();
+            });
+
+            document.getElementById("btnEqual").addEventListener("click", function() {
+                try {
+                    display.value = eval(display.value).toString();
+                } catch (error) {
+                    display.value = "Error";
+                }
+            });
+        </script>
+    </body>
+</html>

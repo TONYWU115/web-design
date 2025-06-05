@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>In-class-Exercise 7-1</title>
+
+        <style>
+            body {
+                text-align: center;
+            }
+        </style>
+
+        <script text="text/javascript">
+            var total=0;
+            var max=0;
+            var min=Infinity;
+
+            var number;
+            var count = 0;
+
+            while (1) 
+            {
+                number = parseInt(window.prompt("請輸入正整數 (輸入-1 為結束):"));
+                if (count == 0 && number == -1)
+                {
+                    max=NaN;
+                    min=NaN;
+                    break;
+                }
+                if (number == -1) 
+                {
+                    break;
+                }
+                total += number;
+                count++;
+                if (number > max) 
+                {
+                    max = number;
+                }
+                if (number < min) 
+                {
+                    min = number;
+                }
+            }
+            var avg = total / count;
+
+            document.write("<h2>");
+            document.write("最大值: " + max + "<br>");
+            document.write("最小值: " + min + "<br>");
+            document.write("平均值: " + avg + "<br>");
+            document.write("</h2>");
+        </script>
+
+    </head>
+
+    <body></body>
+</html>

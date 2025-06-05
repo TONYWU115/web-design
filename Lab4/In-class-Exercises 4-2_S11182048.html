@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>In-class-Exercises 4-2</title>
+
+        <style>
+            .keyboard {
+                display: flex;
+                position: absolute;
+            }
+            .white-key {
+                width: 64px;
+                height: 262px;
+                background-image: url('white_key.png');
+                background-size: cover;
+                position: absolute;
+                z-index: 1;
+            }
+            .black-key {
+                width: 35px;
+                height: 145px;
+                background-image: url('black_key.png');
+                position: absolute;
+                z-index: 2;
+            }
+            .word {
+                position: absolute;
+                bottom: 15px;
+                left: 35%;
+                font-size: 16px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="keyboard">
+            <div class="white-key">
+                <div class="word">Do</div>
+            </div>
+
+            <div class="black-key" style="left: 46px;"></div>
+
+            <div class="white-key" style="left: 62px;">
+                <div class="word">Re</div>
+            </div>
+
+            <div class="black-key" style="left: 108px;"></div>
+            
+            <div class="white-key" style="left: 124px;">
+                <div class="word">Mi</div>
+            </div>
+
+            <div class="white-key" style="left: 186px;">
+                <div class="word">Fa</div>
+            </div>
+
+            <div class="black-key" style="left: 232px;"></div>
+
+            <div class="white-key" style="left: 248px;">
+                <div class="word">So</div>
+            </div>
+
+            <div class="black-key" style="left: 294px;"></div>
+
+            <div class="white-key" style="left: 310px;">
+                <div class="word">La</div>
+            </div>
+        </div>
+    </body>
+</html>

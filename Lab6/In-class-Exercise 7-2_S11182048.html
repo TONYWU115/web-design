@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>In-class-Exercise 7-2</title>
+    </head>
+
+    <style>
+        table {
+            width: 280px;
+            margin: 0 auto;
+        }
+    </style>
+
+    <script text="text/javascript">
+        document.writeln("<div style='text-align: center;'>9*9 Table</div>");
+
+        document.writeln("<table border='1'>");
+        for(var x=1;x<=9;x++)
+        {
+            if(x%3==1)
+            {
+                document.writeln("</tr>");
+                document.writeln("<tr>");
+            }
+            document.writeln("<td>");
+            for(var y=1;y<=9;y++)
+            {
+                document.writeln(x + "*" + y + " = " + x * y + "<br>");
+            }
+            document.writeln("</td>");
+        }
+        document.writeln("</table>");
+
+    </script>   
+    <body></body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>In-class-Exercises 6-2</title>
+    </head>
+    
+    <body>
+        <script text="text/javascript">
+            
+            function game()
+            {
+                var answer = Math.floor(Math.random() * 10) + 1;
+                var number;
+            
+                number = parseInt(window.prompt("請輸入 1~10 之間的數字 (3次機會):"));
+                if (number == answer) 
+                {
+                    alert("Bingo!");
+                    return;
+                } 
+                else if (number < answer) 
+                {
+                    alert("請增大數字!");
+                } 
+                else 
+                {
+                    alert("請減小數字!");
+                }
+            
+                number = parseInt(window.prompt("請輸入 1~10 之間的數字 (剩2次機會):"));
+                if (number == answer) 
+                {
+                    alert("Bingo!");
+                    return;
+                } 
+                else if (number < answer) 
+                {
+                    alert("請增大數字!");
+                } 
+                else 
+                {
+                    alert("請減小數字!");
+                }
+            
+                number = parseInt(window.prompt("請輸入 1~10 之間的數字 (剩1次機會):"));
+                if (number == answer) 
+                {
+                    alert("Bingo!");
+                } 
+                else 
+                {
+                    alert("答錯了，答案是 " + answer + "!");
+                }
+            }
+            game();
+        </script>
+    </body>
+</html>

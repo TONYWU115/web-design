@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>In-class-Exercise 10-2</title>
+    <style>
+    #game table {
+        border-spacing: 2px;
+        margin-bottom: 20px;
+        border: 1px solid black;
+    }
+    #game td {
+        padding: 0;
+        border: 1px solid black;
+    }
+    img {
+        width: 60px;
+        height: 90px;
+        cursor: pointer;
+        /* border: 1px solid #888; */
+    }
+    #message {
+        font-size: 20px;
+        color: red;
+        font-weight: bold;
+        min-height: 30px;
+        margin-bottom: 10px;
+    }
+    </style>
+</head>
+<body>
+
+    <div id="message">&nbsp;</div>
+    <div id="game"></div>
+    <!-- <div id="message"></div> -->
+
+    <script>
+        const cardValues = [];
+        for (let i = 1; i <= 13; i++) {
+            cardValues.push(i);
+            cardValues.push(i);
+        }
+        const allCards = [...cardValues, ...cardValues]; 
+        
+        for (let i = allCards.length - 1; i > 0; i--) 
+        {
+            const j = Math.floor(Math.random() * (i + 1));
+            [allCards[i], allCards[j]] = [allCards[j], allCards[i]];
+        }
+
+        const gameBoard = document.getElementById('game');
+        const message = document.getElementById('message');
+        const flipped = [];
+        const matched = Array(52).fill(false);
+
+        function render() {
+            gameBoard.innerHTML = '';
+            const table = document.createElement('table');
+            let tr = document.createElement('tr');
+            
+            for (let i = 0; i < 52; i++) 
+            {
+                if (i > 0 && i % 13 === 0) 
+                {
+                    table.appendChild(tr);
+                    tr = document.createElement('tr');
+                }
+                
+                const td = document.createElement('td');
+                const img = document.createElement('img');
+                
+                if (matched[i] || flipped.includes(i)) 
+                {
+                    img.src = `./10-2_image/${allCards[i]}.png`;
+                } 
+                else 
+                {
+                    img.src = './10-2_image/back.png';
+                }
+                
+                img.dataset.index = i;
+                img.onclick = handleFlip;
+                
+                td.appendChild(img);
+                tr.appendChild(td);
+            }
+            
+            table.appendChild(tr);
+            gameBoard.appendChild(table);
+        }
+
+        function handleFlip(event) 
+        {
+            const idx = parseInt(event.target.dataset.index);
+            if (flipped.includes(idx) || matched[idx] || flipped.length >= 2) return;
+
+            flipped.push(idx);
+            render();
+
+            if (flipped.length === 2) 
+            {
+                const [i1, i2] = flipped;
+                if (allCards[i1] === allCards[i2]) 
+                {
+                    matched[i1] = true;
+                    matched[i2] = true;
+                    flipped.length = 0;
+                    checkWin();
+                } 
+                else 
+                {
+                    setTimeout(() => {
+                        flipped.length = 0;
+                        render();
+                    }, 500);
+                }
+            }
+        }
+
+        function checkWin() {
+            if (matched.every(m => m)) {
+                message.textContent = '恭喜獲得勝利~!';
+            }
+        }
+
+        render();
+    </script>
+
+</body>
+</html>

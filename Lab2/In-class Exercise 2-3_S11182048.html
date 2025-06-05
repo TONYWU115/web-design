@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>In-class Exercise 2-3</title>
+
+        <style>
+            html {
+                width: 400px;
+                margin: 50px auto; 
+                padding: 10px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <br><br>
+        <h2 style="text-align: center; ">教科書預定系統</h2>
+
+        <form method="get" action="https://people.cs.nycu.edu.tw/~jmliang/get_post.php">
+            <p>
+                <label>
+                    姓名: 
+                    <input name="name" type="text" size="20" maxlength="30">
+                </label>
+            </p>
+
+            <p>
+                <label>
+                    寢室分機:
+                    <input name="room" type="text" size="20" maxlength="30">
+                </label>
+            </p>
+
+            <p>
+                選擇書籍：
+                <ul>
+                    1.<label><input type="checkbox" name="book1" value="buy"> Internet & World Wide Web: How to Program</label><br>
+                    2.<label><input type="checkbox" name="book2" value="buy"> Visual C# 2010: How to Program</label><br>
+                    3.<label><input type="checkbox" name="book3" value="buy"> Data Structure</label><br>
+                </ul>
+            </p>
+
+            <p>
+                付款方式：
+                <ul>
+                    1.<label><input type="radio" name="payment" value="Cash">Cash</label><br>
+                    2.<label><input type="radio" name="payment" value="Check">Check</label><br>
+                    3.<em>信用卡</em>:
+                        <ul>
+                            <li><label><input type="radio" name="payment" value="mastercard">Mastercard</label></li>
+                            <li><label><input type="radio" name="payment" value="visa">Visa</label></li>
+                            <li><label><input type="radio" name="payment" value="American Express">American Express</label></li>
+                        </ul>
+                </ul>
+            </p>
+
+            <p>
+                確認訂單，請按下此按鈕
+                <input type="submit" value="確認訂單">
+            </p>
+            
+        </form>
+    </body>
+</html>
